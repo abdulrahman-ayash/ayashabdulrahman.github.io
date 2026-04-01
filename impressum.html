@@ -4,48 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum | PDF Syn</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { direction: ltr; text-align: left; background: #f8fafc; }
-        .legal-container { background: white; margin: 2rem auto; max-width: 900px; border-radius: 1.5rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); padding: 2rem; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; margin: 0; padding: 2rem; direction: ltr; text-align: left; }
+        .container { max-width: 800px; margin: auto; background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
         h1 { color: #1e3c72; }
-        address { font-style: normal; background: #f1f5f9; padding: 1rem; border-radius: 1rem; margin: 1rem 0; }
+        address { background: #f1f5f9; padding: 1rem; border-radius: 1rem; margin: 1rem 0; font-style: normal; }
         a { color: #4a9eff; text-decoration: none; }
-        .back-link { margin-top: 2rem; text-align: center; }
+        .back { margin-top: 2rem; text-align: center; }
+        .placeholder { background: #fef9e3; padding: 0.2rem 0.4rem; border-radius: 0.3rem; font-family: monospace; }
     </style>
 </head>
 <body>
-    <div class="legal-container">
-        <h1>Impressum</h1>
-        <p><strong>Angaben gemäß § 5 TMG und § 18 MStV</strong></p>
-        
-        <address>
-            <strong>Abdul Rahman Ayash</strong><br>
-            Ackerstr. 19<br>
-            40233 Düsseldorf<br>
-            Deutschland
-        </address>
-
-        <p><strong>Kontakt:</strong><br>
-            Telefon: +49 211 1234567 (bitte durch eigene Nummer ersetzen)<br>
-            E-Mail: <a href="mailto:contact@pdf-syn.com">contact@pdf-syn.com</a><br>
-            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Abdul Rahman Ayash (Anschrift wie oben)
-        </p>
-
-        <p><strong>Umsatzsteuer-ID:</strong><br>
-            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: (noch nicht vergeben – bitte bei Bedarf ergänzen)
-        </p>
-
-        <p><strong>Haftungsausschluss (Disclaimer):</strong><br>
-            Die Inhalte dieser App wurden sorgfältig erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Bei externen Links haften wir nicht für deren Inhalte, da wir keine Kontrolle über diese haben.</p>
-
-        <p><strong>Streitschlichtung:</strong><br>
-            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>. Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-
-        <div class="back-link">
-            <a href="index.html" style="background: #1e3c72; color: white; padding: 0.6rem 1.2rem; border-radius: 2rem; text-decoration: none;">← Zurück zur App</a>
-        </div>
+<div class="container">
+    <h1>Impressum</h1>
+    <p><strong>Angaben gemäß § 5 TMG und § 18 MStV</strong></p>
+    <address>
+        <strong>Abdul Rahman Ayash</strong><br>
+        Ackerstr. 19<br>
+        40233 Düsseldorf<br>
+        Deutschland
+    </address>
+    <p><strong>Kontakt:</strong><br>
+        Telefon: <span class="placeholder">[]</span><br>
+        E-Mail: <span class="placeholder">[ayash.abdulrahman1@gmail.com]</span><br>
+        Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Abdul Rahman Ayash (Anschrift wie oben)
+    </p>
+    <p><strong>Umsatzsteuer-ID:</strong><br>
+        <span class="placeholder">[falls vorhanden, bitte eintragen, sonst "nicht vergeben"]</span>
+    </p>
+    <p><strong>Haftungsausschluss:</strong><br>
+        Die Inhalte dieser App wurden sorgfältig erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität übernehmen wir keine Gewähr.
+    </p>
+    <p><strong>Streitschlichtung:</strong><br>
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a>. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+    </p>
+    <div class="back">
+        <a href="index.html" style="background: #1e3c72; color: white; padding: 0.6rem 1.2rem; border-radius: 2rem; text-decoration: none;">← Zurück zur App</a>
     </div>
+</div>
 </body>
 </html>
