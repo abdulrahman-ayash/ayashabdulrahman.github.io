@@ -1,52 +1,100 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF Syn</title>
-
-<style>
-body {
-  font-family: Arial;
-  background: #f5f7fa;
-  text-align: center;
-  margin: 0;
-}
-
-.container {
-  margin-top: 100px;
-}
-
-h1 {
-  font-size: 30px;
-}
-
-p {
-  color: gray;
-}
-
-a {
-  display: block;
-  margin: 10px auto;
-  padding: 15px;
-  width: 200px;
-  background: #2563eb;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>PDF Syn – تطبيق PDF احترافي</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="profile-card">
+            <div class="profile-info">
+                <h2>عبد أبو علي <span style="font-size: 1rem;">Abdul</span></h2>
+                <p>PDF Syn – Professionalle PDF App für Deutschland</p>
+            </div>
+            <div>
+                <i class="fas fa-user-circle" style="font-size: 3rem; color: var(--primary);"></i>
+            </div>
+        </div>
 
-<div class="container">
-  <h1>PDF Syn</h1>
-  <p>Professionelle PDF App für Deutschland 🇩🇪</p>
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label"><i class="fas fa-tools"></i> أدوات PDF</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7</div>
+                <div class="stat-label"><i class="fas fa-file-pdf"></i> مكتبة PDF</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label"><i class="fas fa-link"></i> روابط الويب</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7</div>
+                <div class="stat-label"><i class="fas fa-folder-open"></i> إجمالي ملفاتي</div>
+            </div>
+        </div>
 
-  <a href="datenschutz.html">Datenschutz</a>
-  <a href="impressum.html">Impressum</a>
-</div>
+        <!-- PDF Tools Section -->
+        <h3 style="margin: 1.5rem 0 1rem;"><i class="fas fa-magic"></i> أدوات PDF الذكية</h3>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-camera"></i></div>
+                <h3>Document Scanner</h3>
+                <p>مسح المستندات بالكاميرا وتحويلها إلى PDF</p>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
+                <h3>PDF Editor</h3>
+                <p>تحرير النصوص والصور في ملفات PDF</p>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-language"></i></div>
+                <h3>OCR (نص ضوئي)</h3>
+                <p>استخراج النص من الصور و PDF الممسوحة ضوئياً</p>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
+                <h3>Payment QR</h3>
+                <p>إنشاء رموز QR للدفع (IBAN، بيانات الفواتير)</p>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-undo-alt"></i></div>
+                <h3>Undo / Redo</h3>
+                <p>تراجع واستعادة التعديلات بسهولة</p>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon"><i class="fas fa-highlighter"></i></div>
+                <h3>Highlight Text</h3>
+                <p>تحديد النصوص وإضافة تعليقات ملونة</p>
+            </div>
+        </div>
+    </div>
 
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-folder-open"></i>
+            <span>Library</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-tools"></i>
+            <span>PDF Tools</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+        </a>
+    </div>
 </body>
 </html>
