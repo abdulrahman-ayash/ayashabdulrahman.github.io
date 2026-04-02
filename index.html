@@ -1,356 +1,528 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>PDF Syn – تطبيق PDF احترافي</title>
-    <!-- Font Awesome 6 (أيقونات) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Inter + Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* ========== RESET & GLOBAL ========== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>PDF Syn – تطبيق PDF احترافي</title>
+  <meta
+    name="description"
+    content="PDF Syn هو تطبيق PDF احترافي لإدارة الملفات والمسح الضوئي والتحرير وأدوات PDF الذكية."
+  />
 
-        body {
-            font-family: 'Cairo', 'Inter', sans-serif;
-            background: linear-gradient(145deg, #f6f9fc 0%, #eef2f8 100%);
-            color: #1a2c3e;
-            padding-bottom: 85px;
-            line-height: 1.5;
-        }
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 1.2rem;
-        }
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: rgba(255, 255, 255, 0.88);
+      --card: #ffffff;
+      --text: #152638;
+      --muted: #68788a;
+      --line: #e8edf3;
+      --primary: #1f4265;
+      --primary-soft: #edf4fb;
+      --accent: #d95a78;
+      --shadow: 0 14px 34px rgba(18, 38, 63, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --max-width: 1180px;
+    }
 
-        /* ========== بطاقة البروفايل ========== */
-        .profile-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border-radius: 2rem;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 5px 12px rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .profile-info h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1e3a5f, #2b5c8a);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 0.25rem;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .profile-info p {
-            color: #4a627a;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
+    body {
+      font-family: "Cairo", sans-serif;
+      background:
+        radial-gradient(circle at top right, #ffffff 0%, #f5f7fb 42%, #eef3f8 100%);
+      color: var(--text);
+      line-height: 1.7;
+      padding-bottom: 92px;
+    }
 
-        .profile-icon {
-            background: #fff;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            font-size: 2rem;
-            color: #1e3a5f;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        /* ========== إحصائيات ========== */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-        }
+    .container {
+      width: min(var(--max-width), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 22px 0 40px;
+    }
 
-        .stat-card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.2rem 0.8rem;
-            text-align: center;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-            border: 1px solid #e9edf2;
-        }
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
 
-        .stat-card:hover {
-            transform: translateY(-4px);
-            border-color: #cbdbe0;
-            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
-        }
+    .hero-text h1 {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
 
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #1e3a5f;
-            line-height: 1;
-        }
+    .hero-text .sub-name {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 8px;
+    }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: #6c7f8f;
-            margin-top: 0.4rem;
-            font-weight: 500;
-        }
+    .hero-text p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
 
-        /* ========== عنوان القسم ========== */
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 1.5rem 0 1.2rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #1e2f3e;
-        }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
 
-        .section-title i {
-            color: #2b5c8a;
-            font-size: 1.4rem;
-        }
+    .hero-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #ffffff, #eef4fb);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(24, 45, 70, 0.08);
+      color: var(--primary);
+      font-size: 2rem;
+    }
 
-        /* ========== شبكة الأدوات ========== */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
 
-        .tool-card {
-            background: white;
-            border-radius: 1.8rem;
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-            border: 1px solid #eef2f6;
-            cursor: pointer;
-        }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 18px 14px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(17, 34, 51, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
 
-        .tool-card:hover {
-            transform: scale(1.01);
-            border-color: #cbdde9;
-            box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.1);
-        }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: #d5e2ef;
+      box-shadow: 0 14px 28px rgba(17, 34, 51, 0.08);
+    }
 
-        .tool-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1e3a5f;
-        }
+    .stat-number {
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
 
-        .tool-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
+    .stat-label {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
 
-        .tool-card p {
-            color: #5f7f9a;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      margin-top: 8px;
+    }
 
-        /* ========== شريط التنقل السفلي ========== */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(16px);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 0.7rem 1rem 1rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            z-index: 100;
-        }
+    .section-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text);
+    }
 
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.3rem;
-            color: #8a9bb0;
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
+    .section-title i {
+      color: var(--accent);
+    }
 
-        .nav-item i {
-            font-size: 1.5rem;
-        }
+    .section-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
 
-        .nav-item.active,
-        .nav-item:hover {
-            color: #1e3a5f;
-            transform: translateY(-2px);
-        }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
 
-        /* ========== زر الرابط القانوني (أسفل) ========== */
-        .legal-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            padding: 1rem 0;
-            font-size: 0.8rem;
-        }
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      box-shadow: 0 8px 22px rgba(17, 34, 51, 0.03);
+      min-height: 200px;
+    }
 
-        .legal-links a {
-            color: #6f8eae;
-            text-decoration: none;
-        }
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: #d6e2ef;
+      box-shadow: 0 18px 32px rgba(17, 34, 51, 0.08);
+    }
 
-        .legal-links a:hover {
-            color: #1e3a5f;
-            text-decoration: underline;
-        }
+    .tool-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+    }
 
-        /* ========== استجابة ========== */
-        @media (max-width: 640px) {
-            .profile-card {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .section-title {
-                font-size: 1.3rem;
-            }
-        }
-    </style>
+    .tool-card h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .tool-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.75;
+    }
+
+    .legal-box {
+      margin-top: 30px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: 0 8px 22px rgba(17, 34, 51, 0.03);
+    }
+
+    .legal-title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .legal-links a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #f7fafc;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .legal-links a:hover {
+      border-color: #cedae7;
+      color: var(--primary);
+      background: #f0f6fc;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(15, 23, 42, 0.06);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      min-width: 64px;
+      color: #7c8da1;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: transform 0.18s ease, color 0.18s ease;
+    }
+
+    .nav-item i {
+      font-size: 1.28rem;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 1080px) {
+      .tools-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 18px, 100%);
+      }
+
+      .hero-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text .sub-name {
+        display: block;
+        margin-right: 0;
+        margin-top: 4px;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-bottom: 88px;
+      }
+
+      .hero-card {
+        padding: 18px;
+        border-radius: 22px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .stat-card,
+      .tool-card,
+      .legal-box {
+        border-radius: 18px;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+      }
+
+      .tool-card {
+        min-height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
+  <main class="container">
+    <section class="hero-card">
+      <div class="hero-text">
+        <h1>
+          PDF Syn
+          <span class="sub-name">عبد الرحمن عياش — Abdul Rahman Ayash</span>
+        </h1>
+        <p>تطبيق PDF احترافي لإدارة المستندات، المسح الضوئي، والتحرير الذكي.</p>
+        <div class="hero-badge">
+          <i class="fas fa-shield-halved"></i>
+          <span>مصمم ليكون واضحًا، سريعًا، ومناسبًا للمستخدم في ألمانيا</span>
+        </div>
+      </div>
 
-<div class="container">
-    <!-- بطاقة الهوية -->
-    <div class="profile-card">
-        <div class="profile-info">
-            <h1>عبد الرحمن عياش <span style="font-size: 1rem; font-weight: 500;">Abdul Rahman Ayash</span></h1>
-            <p><i class="fas fa-check-circle" style="color: #2b5c8a; font-size: 0.8rem;"></i> PDF Syn – Professionelle PDF App für Deutschland</p>
-        </div>
-        <div class="profile-icon">
-            <i class="fas fa-user-astronaut"></i>
-        </div>
-    </div>
+      <div class="hero-icon">
+        <i class="fas fa-file-pdf"></i>
+      </div>
+    </section>
 
-    <!-- إحصائيات -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-number">7</div>
-            <div class="stat-label"><i class="fas fa-file-pdf"></i> مكتبة PDF</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">0</div>
-            <div class="stat-label"><i class="fas fa-tools"></i> أدوات PDF</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">0</div>
-            <div class="stat-label"><i class="fas fa-link"></i> روابط الويب</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">7</div>
-            <div class="stat-label"><i class="fas fa-folder-open"></i> إجمالي ملفاتي</div>
-        </div>
-    </div>
+    <section class="stats-grid" aria-label="إحصائيات التطبيق">
+      <article class="stat-card">
+        <div class="stat-number">7</div>
+        <div class="stat-label"><i class="fas fa-file-pdf"></i> مكتبة PDF</div>
+      </article>
 
-    <!-- أدوات PDF الذكية -->
-    <div class="section-title">
-        <i class="fas fa-magic"></i>
-        <span>أدوات PDF الذكية</span>
-    </div>
+      <article class="stat-card">
+        <div class="stat-number">0</div>
+        <div class="stat-label"><i class="fas fa-screwdriver-wrench"></i> أدوات PDF</div>
+      </article>
 
-    <div class="tools-grid">
-        <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-camera"></i></div>
-            <h3>Document Scanner</h3>
-            <p>مسح المستندات بالكاميرا وتحويلها إلى PDF عالي الجودة</p>
-        </div>
-        <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
-            <h3>PDF Editor</h3>
-            <p>تحرير النصوص والصور واللغة العربية بسلاسة</p>
-        </div>
-        <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-language"></i></div>
-            <h3>OCR (نص ضوئي)</h3>
-            <p>استخراج النص من الصور وPDF الممسوحة ضوئياً – محلي بالكامل</p>
-        </div>
-        <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
-            <h3>Payment QR</h3>
-            <p>إنشاء رمز QR للدفع مع IBAN وبيانات الفواتير بدقة عالية</p>
-        </div>
-        <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-undo-alt"></i></div>
-            <h3>Undo / Redo</h3>
-            <p>تراجع واستعادة التعديلات بخطوة واحدة</p>
-        </div>
-        <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-highlighter"></i></div>
-            <h3>Highlight Text</h3>
-            <p>تحديد النصوص وإضافة تعليقات ملونة في الملفات</p>
-        </div>
-        <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-drag-drop"></i></div>
-            <h3>Drag & Resize</h3>
-            <p>سحب وتغيير حجم العناصر داخل PDF بسهولة</p>
-        </div>
-        <div class="tool-card">
-            <div class="tool-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3>Firebase Sync</h3>
-            <p>تشفير ومزامنة آمنة (اختياري) – بياناتك تبقى مشفرة</p>
-        </div>
-    </div>
+      <article class="stat-card">
+        <div class="stat-number">0</div>
+        <div class="stat-label"><i class="fas fa-globe"></i> روابط الويب</div>
+      </article>
 
-    <!-- روابط قانونية -->
-    <div class="legal-links">
+      <article class="stat-card">
+        <div class="stat-number">7</div>
+        <div class="stat-label"><i class="fas fa-folder-open"></i> إجمالي ملفاتي</div>
+      </article>
+    </section>
+
+    <section aria-labelledby="tools-title">
+      <div class="section-header">
+        <h2 class="section-title" id="tools-title">
+          <i class="fas fa-wand-magic-sparkles"></i>
+          <span>أدوات PDF الذكية</span>
+        </h2>
+      </div>
+
+      <p class="section-note">
+        مجموعة ميزات عملية تساعدك على مسح المستندات، تحريرها، وتنظيمها بسرعة.
+      </p>
+
+      <div class="tools-grid">
+        <article class="tool-card">
+          <div class="tool-icon"><i class="fas fa-camera"></i></div>
+          <h3>Document Scanner</h3>
+          <p>مسح المستندات بالكاميرا وتحويلها إلى ملف PDF واضح وعالي الجودة.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon"><i class="fas fa-pen-to-square"></i></div>
+          <h3>PDF Editor</h3>
+          <p>تحرير النصوص والصور والمحتوى داخل ملفات PDF بشكل سلس وواضح.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon"><i class="fas fa-language"></i></div>
+          <h3>OCR</h3>
+          <p>استخراج النصوص من الصور أو الملفات الممسوحة ضوئيًا محليًا داخل التطبيق.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
+          <h3>Payment QR</h3>
+          <p>إنشاء رموز QR للدفع والفواتير مع دعم بيانات مثل IBAN بشكل منظم.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon"><i class="fas fa-rotate-left"></i></div>
+          <h3>Undo / Redo</h3>
+          <p>التراجع عن التعديلات أو استعادتها بسرعة أثناء العمل على المستندات.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon"><i class="fas fa-highlighter"></i></div>
+          <h3>Highlight Text</h3>
+          <p>تمييز النصوص وإضافة ملاحظات بصرية تساعد على القراءة والمراجعة.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon"><i class="fas fa-up-down-left-right"></i></div>
+          <h3>Drag & Resize</h3>
+          <p>تحريك العناصر وتغيير أحجامها داخل الصفحات بطريقة أسهل وأكثر دقة.</p>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+          <h3>Secure Sync</h3>
+          <p>مزامنة اختيارية وآمنة للملفات والبيانات عند تفعيل التخزين السحابي.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="legal-box" aria-labelledby="legal-title">
+      <h2 class="legal-title" id="legal-title">الروابط القانونية</h2>
+      <div class="legal-links">
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
-    </div>
-</div>
+        <a href="terms.html">Terms of Use</a>
+        <a href="third-party.html">Third-Party Licenses</a>
+      </div>
+    </section>
+  </main>
 
-<!-- شريط التنقل السفلي -->
-<div class="bottom-nav">
+  <nav class="bottom-nav" aria-label="التنقل السفلي">
     <a href="index.html" class="nav-item active">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
+      <i class="fas fa-house"></i>
+      <span>Home</span>
     </a>
-    <a href="#" class="nav-item">
-        <i class="fas fa-folder-open"></i>
-        <span>Library</span>
-    </a>
-    <a href="#" class="nav-item">
-        <i class="fas fa-tools"></i>
-        <span>PDF Tools</span>
-    </a>
-    <a href="#" class="nav-item">
-        <i class="fas fa-cog"></i>
-        <span>Settings</span>
-    </a>
-</div>
 
+    <a href="#" class="nav-item">
+      <i class="fas fa-folder-open"></i>
+      <span>Library</span>
+    </a>
+
+    <a href="#" class="nav-item">
+      <i class="fas fa-screwdriver-wrench"></i>
+      <span>PDF Tools</span>
+    </a>
+
+    <a href="#" class="nav-item">
+      <i class="fas fa-gear"></i>
+      <span>Settings</span>
+    </a>
+  </nav>
 </body>
 </html>
